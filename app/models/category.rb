@@ -1,3 +1,5 @@
 class Category < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :receipts
+
+  validates :title, presence: true, uniqueness: true
 end
