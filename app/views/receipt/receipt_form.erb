@@ -1,0 +1,10 @@
+<form action="/receipts" method="POST">
+  <input type="text" name="receipt[title]" placeholder="Title">
+  <input type="text" name="receipt[content]" placeholder="Content">
+  <input type="text" name="receipt[url]" placeholder="URL">
+  <select name="category[category_id]">
+    <% @categories.each do |category| %>
+      <option value="<%= category.id %>"> <%=category.title %></option>
+    <% end %>
+  <input type="submit" value="Add">
+</form>
