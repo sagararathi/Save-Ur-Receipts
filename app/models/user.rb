@@ -3,5 +3,6 @@ class User < ActiveRecord::Base
   has_many :receipts
 
   validates :username, :password, :password_confirmation, :email, presence: true
-  validates :username, :email, uniqueness: truegit  
+  validates :username, :email, uniqueness: true
+  validates :email, :format => /.+@.+\..+/ 
 end
