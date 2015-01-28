@@ -1,9 +1,9 @@
-  <div id='showbox'>
+  <div class='showbox'>
     <%= receipt.title %>
     <%= receipt.content %>
     <a href="<%= receipt.url%>"><img src="<%= receipt.url%>" id = 'receipt_img'></a><br>
-    <a href="/receipt/<%=receipt.id %>/edit"> Edit</a>
-    <a href="/receipt/<%=receipt.id %>/delete"> Delete</a>
+    <a href="/receipts/<%=receipt.id %>/edit"> Edit</a>
+    <a href="/receipts/<%=receipt.id %>" class="delete"> Delete</a>
   </div>
 
 
