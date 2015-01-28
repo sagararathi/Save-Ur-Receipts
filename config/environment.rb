@@ -36,7 +36,7 @@ configure do
   #This peace of code will check user authtecation
 
   register do
-    def auth type
+    def auth(type)
       condition do
         unless send("current_#{type}")
           add_error!("Please Login First")
