@@ -1,5 +1,5 @@
 get '/' do
-  erb :welcome
+  erb :'index'
 end
 
 get '/login' do
@@ -8,7 +8,7 @@ end
 # create post route for user login
 post '/login' do
   user = User.find_by(username: params[:user][:username])
-  if user.try(:authtecation, params[:user][:password])
+  if user.try(:authenticate, params[:user][:password])
     session[:user_id] = user.id
     redirect '/'
   else
@@ -33,7 +33,7 @@ post '/signup' do
   end
 end
 # add signout route for user
-get '/logoutgit ' do
+get '/logout' do
   session.clear
   redirect '/'
 end
