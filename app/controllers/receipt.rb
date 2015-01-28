@@ -1,6 +1,7 @@
 # create route for display all receipts
 get '/receipts' do
-
+  @receipts = Receipt.all
+  erb :'receipt/showAll'
 end
 # create route for add new receipt
 
@@ -10,17 +11,21 @@ get '/receipts/new', auth: :user do
 end
 
 post '/receipts', auth: :user do
-receipt = Receipt.new( title: params[:receipt][:title],
-                       content: params[:receipt][:content],
-                       url: params[:receipt][:url],
-                       category_id: params[:category][:category_id],
-                       user_id: current_user.id)
-redirect '/'
+  receipt = Receipt.new(params[:receipt])
+  receipt.update_attributes(params[:category])
+  receipt.user = current_user
+  receipt.save
+  redirect '/'
 end
 
 # create route for searching by title
-get '/receipts/title' do
+get '/receipts/search' do
+  erb :'receipt/searchbox'
+end
 
+get'/receipts/:id'do
+  receipt = Receipt.find(params[:receipt][:id])
+  erb :'receipt/show', locals: {receipt: receipt}
 end
 
 # create route for edit
@@ -34,8 +39,9 @@ end
 
 # create route to delete specific
 
-delete '/receipts/:id' do
-
+delete '/receipts/:id' do id
+  receipt = Receipt.find(id)
+  receipt.destroy
 end
 
 #create route for adding category
