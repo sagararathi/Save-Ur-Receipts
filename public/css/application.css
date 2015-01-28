@@ -101,7 +101,7 @@ li a:hover{
 #main_display{
     float:right;
     width:85%;
-
+    padding-top: 20px;
 }
 
 #logo{
@@ -116,5 +116,25 @@ footer{
   bottom:0;
   background-color:#000000;
   color:#ffffff;
+}
+#searchbox{
+    width: 100px;
+    height:20px;
+    padding: 4px 9px 4px 27px;
+    border-radius: 15px;
+    background: url(http://s.swiftypecdn.com/assets/embed_mag-115e233edebef5dbcde4c557157b625c.png)no-repeat 7px 7px;
+}
+
+#showbox{
+    width:200px;
+    display: inline-block;
+    height:auto;
+    border: 1px solid #000000;
+    box-shadow: 4px px 2px #d3d3d3;
+}
+
+#receipt_img{
+    max-height: 200px;
+    max-width:200px;
 }
 
