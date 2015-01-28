@@ -7,7 +7,7 @@ get '/login' do
 end
 
 post '/login' do
-  user = User.find_by(username: params[:user][:username])
+  user = User.find_by(username: params[:user][:username])commit
 end
 
 get '/signup' do
