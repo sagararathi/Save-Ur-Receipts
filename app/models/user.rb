@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
 
   validates :username, :password, :password_confirmation, :email, presence: true
   validates :username, :email, uniqueness: true
-  validates :email, :format => /.+@.+\..+/ 
+  # validates :email, :format => /.+@.+\..+/ 
 end
