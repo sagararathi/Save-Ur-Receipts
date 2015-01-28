@@ -35,10 +35,11 @@ end
 #create route for adding category
 
 get '/categories/new' do
-
+erb :'receipt/category_form'
 end
 
 post '/categories' do
-
+ Category.create(params[:category])
+ redirect '/'
 end
 
