@@ -18,7 +18,7 @@ end
 
 get '/signup' do
 # create erb and route for signup
-erb :'auth/signup'
+  erb :'auth/signup'
 end
 
 #add post route for signup
@@ -31,6 +31,11 @@ post '/signup' do
     # if time permits will add error handling code
     redirect '/'
   end
+end
+# add signout route for user
+get '/logoutgit ' do
+  session.clear
+  redirect '/'
 end
 
 
