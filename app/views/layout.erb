@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<header>
+  <header>
     <div id ="header_title"> <img src="../img/receipt.png" id ="logo"> Save UR Receipt
     </div>
     <div id ="login"><%= erb  :'auth/login' %></div>
@@ -30,46 +30,47 @@
 
     <div id="login-toolbar">
       <% if current_user %>
-        <a href="/logout">Logout</a>
+      <a href="/logout">Logout</a>
 
       <% else %>
-        <a href="/login" id="login-link">Login</a>
-        <a href="/signup" id= "signup-link">Signup</a>
+      <a href="/login" id="login-link">Login</a>
+      <a href="/signup" id= "signup-link">Signup</a>
       <% end %>
     </div>
   </header>
-<div class="container">
-  <div id = "sidebar">
+  <div class="container">
+    <div id = "sidebar">
 
       <nav>
         <ul>
           <li>
-          <a href="#">Show all Receipt</a>
+            <a href="/receipts">Show all Receipt</a>
           </li>
           <li>
-          <a href="#">Search Receipt</a>
+            <a href="/receipts/search">Search Receipt</a>
           </li>
           <li>
-          <a href="/receipts/new">Add Receipt</a>
+            <a href="/receipts/new">Add Receipt</a>
           </li>
           <li>
-          <a href="/categories/new">Add Category</a>
+            <a href="/categories/new">Add Category</a>
           </li>
         </ul>
       </nav>
 
+    </div>
+
+    <center>
+      <div id="main_display">
+        <div id="signup"><%= erb :'auth/signup'%></div>
+          <%= yield %>
+      </div>
+    </center>
   </div>
 
+  <footer>
 
-<div id="main_display">
-  <div id="signup"><%= erb :'auth/signup'%></div>
-  <%= yield %>
-</div>
-</div>
-
-<footer>
-
-</footer>
+  </footer>
 
 
 
