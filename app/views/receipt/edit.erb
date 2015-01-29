@@ -1,0 +1,17 @@
+
+  <form action="/receipts/<%= receipt.id%>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="text" name="receipt[title]" value="<%= receipt.title%>"><br><br>
+    <input type="text" name="receipt[content]" value="<%= receipt.content%>"><br><br>
+    <input type="text" name="receipt[url]" value="<%= receipt.url%>"><br><br>
+    <select name="category[category_id]" >
+      <% @categories.each do |category| %>
+      <% if category.id == receipt.category_id %>
+        <option value="<%= category.id %>" selected> <%=category.title %></option>
+        <%else%>
+        <option value="<%= category.id %>"> <%=category.title %></option>
+        <%end%>
+      <% end %>
+    </select><br><br>
+    <input type="submit" value="Update">
+
