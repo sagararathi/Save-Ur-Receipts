@@ -12,6 +12,7 @@
   -->
   <link rel="stylesheet" href="/css/application.css">
   <!-- Load Vollkorn font -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -22,7 +23,7 @@
 <body>
 
   <header>
-    <div id ="header_title"> <img src="../img/receipt.png" id ="logo"> Save UR Receipt
+    <div id ="header_title"> <img src="/img/receipt.png" id ="logo"> Save UR Receipt
     </div>
     <div id ="login"><%= erb  :'auth/login' %></div>
 
@@ -39,15 +40,18 @@
     </div>
   </header>
   <div class="container">
-    <div id = "sidebar">
 
+    <div id = "sidebar">
+      <% if current_user %>
       <nav>
         <ul>
           <li>
             <a href="/receipts">Show all Receipt</a>
           </li>
           <li>
-            <a href="/receipts/search">Search Receipt</a>
+            <a href="/receipts/search" id="search-link">Search Receipt</a>
+            <div id='search-box'>
+            </div>
           </li>
           <li>
             <a href="/receipts/new">Add Receipt</a>
@@ -57,15 +61,44 @@
           </li>
         </ul>
       </nav>
+      <%else%>
+      <nav>
+        <ul>
+          <h3>  One place for ALL of your receipts</h3>
+          <li>
+            <p>We keep all your receipts, and we mean ALL (paper and digital), in one convenient place.</p>
+          </li>
+          <li>
+            <ol>
+              <li>Store your receipts</li>
+              <li>your paper receipts by simply taking a picture</li>
+            </ol>
 
+          </li>
+        </ul>
+      </nav>
+      <% end %>
     </div>
 
+
     <center>
+
       <div id="main_display">
+        <div >
+          <h2 class="banner">Save & Organize</h2>
+          <h3 class="banner">All Your Receipts Online</h3>
+          <% if !current_user %>
+            <p>It’s easy and free to start using MyReceipts to begin
+              a paperless receipt lifestyle. You can sign up by simply fill out the sign up form. </p>
+              <img src="/img/save-a-tree.png">
+          <% end %>
+        </div>
+        <div id='display-search'></div>
         <div id="signup"><%= erb :'auth/signup'%></div>
           <%= yield %>
       </div>
     </center>
+
   </div>
 
   <footer>
