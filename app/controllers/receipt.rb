@@ -20,17 +20,36 @@ end
 
 # create route for searching by title
 get '/receipts/search' do
-  erb :'receipt/searchbox'
+  if request.xhr?
+    erb :'receipt/searchbox', layout: false
+  else
+    erb :'receipt/searchbox'
+  end
 end
 
-get'/receipts/:id'do
-  receipt = Receipt.find(params[:receipt][:id])
+get '/receipts/performsearch', auth: :user do
+  receipt = Receipt.find(params[:receipt_id])
+  # if request.xhr?
+  #   redirect "/receipts/#{receipt.id}", layout: false
+  # else
+    redirect "/receipts/#{receipt.id}"
+  # end
+end
+
+get '/receipts/:id' do
+  receipt = Receipt.find(params[:id])
   erb :'receipt/show', locals: {receipt: receipt}
 end
 
 # create route for edit
-get '/receipts/:id/edit' do
-
+get '/receipts/:id/edit', auth: :user do |id|
+  receipt = Receipt.find(id)
+  @categories = Category.all
+  if request.xhr?
+    erb :'receipt/edit', locals: {receipt: receipt}, layout: false
+  else
+    erb :'receipt/edit', locals: {receipt: receipt}
+  end
 end
 
 put '/receipts/:id' do
