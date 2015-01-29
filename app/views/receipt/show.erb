@@ -1,7 +1,7 @@
 <% if current_user.id == receipt.user_id %>
   <div class='showbox'>
-    <%= receipt.title %>
-    <%= receipt.content %>
+    <%= receipt.title %><br>
+    <%= receipt.content %><br>
     <a href="<%= receipt.url%>"><img src="<%= receipt.url%>" id = 'receipt_img'></a><br>
     <a href="/receipts/<%=receipt.id %>/edit" class="edit"> Edit</a>
     <a href="/receipts/<%=receipt.id %>" class="delete"> Delete</a>
