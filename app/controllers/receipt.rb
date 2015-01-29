@@ -52,8 +52,11 @@ get '/receipts/:id/edit', auth: :user do |id|
   end
 end
 
-put '/receipts/:id' do
-
+put '/receipts/:id' do |id|
+  receipt = Receipt.find(id)
+  receipt.update(params[:receipt])
+  receipt.update_attributes(params[:category])
+  redirect'/receipts'
 end
 
 # create route to delete specific
