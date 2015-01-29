@@ -3,7 +3,11 @@ get '/' do
 end
 
 get '/login' do
-  erb :'auth/login'
+  if request.xhr?
+    erb :'auth/login', layout: false
+  else
+    erb :'auth/login'
+  end
 end
 # create post route for user login
 post '/login' do
@@ -18,7 +22,11 @@ end
 
 get '/signup' do
 # create erb and route for signup
-  erb :'auth/signup'
+  if request.xhr?
+    erb :'auth/signup', layout: false
+  else
+    erb :'auth/signup'
+  end
 end
 
 #add post route for signup
