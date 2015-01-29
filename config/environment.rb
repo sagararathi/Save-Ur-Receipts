@@ -39,7 +39,6 @@ configure do
     def auth(type)
       condition do
         unless send("current_#{type}")
-          add_error!("Please Login First")
           redirect '/login'
         end
       end
