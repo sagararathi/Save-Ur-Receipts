@@ -91,4 +91,29 @@ $('.showbox').on('click', '.edit', function(event){
       $target.closest('.showbox').remove();
     });
   });
+
+  // following for displaying search box
+  $('#sidebar').on('click', '#search-link', function(event){
+      event.preventDefault();
+      var $target = $(event.target);
+      $.ajax({
+        type: 'GET',
+        url: $target.attr('href')
+      }).done(function(response){
+        $('#search-box').html(response)
+      });
+  });
+
+  // $('#sidebar').keypress(function(event){
+  //   if(event.which == 13){
+  //     event.preventDefault();
+  //     var $target = $(event.target);
+  //     $.ajax({
+  //       type: 'GET',
+  //       url: $target.attr('action')
+  //     }).done(function(response){
+  //       $('#display-search').html(response)
+  //     });
+  //   }
+  // });
 });
