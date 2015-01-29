@@ -22,6 +22,7 @@ header{
   float:left;
   padding-top: 15px;
   padding-right: 10px;
+  color: #000000;
   display: none;
 }
 
@@ -123,14 +124,15 @@ footer{
     padding: 4px 9px 4px 27px;
     border-radius: 15px;
     background: url(http://s.swiftypecdn.com/assets/embed_mag-115e233edebef5dbcde4c557157b625c.png)no-repeat 7px 7px;
+    background-color: #ffffff;
 }
 
-#showbox{
+.showbox{
     width:200px;
     display: inline-block;
     height:auto;
     border: 1px solid #000000;
-    box-shadow: 4px px 2px #d3d3d3;
+    box-shadow: 4px 0px 2px #d3d3d3;
 }
 
 #receipt_img{
@@ -138,3 +140,9 @@ footer{
     max-width:200px;
 }
 
+.banner{
+    color:#36AECC;
+    font-family: Georgia;
+    font-size: 1.8em;
+    font-style: italic;
+}

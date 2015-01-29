@@ -15,7 +15,7 @@ post '/receipts', auth: :user do
   receipt.update_attributes(params[:category])
   receipt.user = current_user
   receipt.save
-  redirect '/'
+  redirect '/receipts'
 end
 
 # create route for searching by title
@@ -39,9 +39,14 @@ end
 
 # create route to delete specific
 
-delete '/receipts/:id' do id
+delete '/receipts/:id' do |id|
   receipt = Receipt.find(id)
   receipt.destroy
+  if request.xhr?
+    "delete"
+  else
+    redirect'/receipts'
+  end
 end
 
 #create route for adding category
