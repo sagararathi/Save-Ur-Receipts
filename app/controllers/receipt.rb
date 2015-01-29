@@ -61,7 +61,7 @@ end
 
 # create route to delete specific
 
-delete '/receipts/:id' do |id|
+delete '/receipts/:id', auth: :user do |id|
   receipt = Receipt.find(id)
   receipt.destroy
   if request.xhr?
